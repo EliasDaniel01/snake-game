@@ -1,104 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Jogo da Cobrinha (Snake)</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Snake Game Turbinado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="777.css">
 </head>
 <body>
-    <h1>Jogo da Cobrinha 🐍</h1>
-    <canvas id="game" width="400" height="400"></canvas>
-    <div id="score">Pontos: 0</div>
-    <div class="controls">
-        <p>Use as setas do teclado para jogar</p>
+  <h1>🐍 Snake Game Turbinado</h1>
+  <div id="scoreboard">
+    <div id="game-status">
+      <span id="level">Nível: 1</span>
+      <span id="powerup-status"></span>
     </div>
-    <footer>
-        <p>Feito por Elias Daniel • <a href="https://github.com/EliasDaniel01">GitHub</a></p>
-    </footer>
-    <script>
-        const canvas = document.getElementById('game');
-        const ctx = canvas.getContext('2d');
-
-        const box = 20;
-        let snake = [];
-        snake[0] = { x: 9 * box, y: 10 * box };
-
-        let direction = "";
-        let score = 0;
-
-        let food = {
-            x: Math.floor(Math.random() * 20) * box,
-            y: Math.floor(Math.random() * 20) * box
-        };
-
-        document.addEventListener("keydown", directionEvent);
-
-        function directionEvent(event) {
-            if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-            if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-            if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
-            if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-        }
-
-        function draw() {
-            ctx.fillStyle = "#222";
-            ctx.fillRect(0, 0, 400, 400);
-
-            for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = i === 0 ? "#00ff00" : "#fff";
-                ctx.fillRect(snake[i].x, snake[i].y, box, box);
-                ctx.strokeStyle = "#222";
-                ctx.strokeRect(snake[i].x, snake[i].y, box, box);
-            }
-
-            ctx.fillStyle = "#ff0000";
-            ctx.fillRect(food.x, food.y, box, box);
-
-            let snakeX = snake[0].x;
-            let snakeY = snake[0].y;
-
-            if (direction === "LEFT") snakeX -= box;
-            if (direction === "UP") snakeY -= box;
-            if (direction === "RIGHT") snakeX += box;
-            if (direction === "DOWN") snakeY += box;
-
-            if (snakeX === food.x && snakeY === food.y) {
-                score++;
-                document.getElementById('score').innerText = "Pontos: " + score;
-                food = {
-                    x: Math.floor(Math.random() * 20) * box,
-                    y: Math.floor(Math.random() * 20) * box
-                };
-            } else {
-                snake.pop();
-            }
-
-            let newHead = { x: snakeX, y: snakeY };
-
-            // Game over
-            if (
-                snakeX < 0 || snakeX >= 400 || snakeY < 0 || snakeY >= 400 ||
-                collision(newHead, snake)
-            ) {
-                clearInterval(game);
-                ctx.fillStyle = "yellow";
-                ctx.font = "40px Arial";
-                ctx.fillText("Fim de jogo!", 80, 200);
-            }
-
-            snake.unshift(newHead);
-        }
-
-        function collision(head, array) {
-            for (let i = 0; i < array.length; i++) {
-                if (head.x === array[i].x && head.y === array[i].y) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        let game = setInterval(draw, 100);
-    </script>
+    <div id="score-area">
+      <span id="score">Score: 0</span>
+      <span id="highscore">Recorde: 0</span>
+    </div>
+  </div>
+  <div class="controls">
+    <label for="speed">Velocidade:</label>
+    <select id="speed">
+      <option value="200">Lento</option>
+      <option value="120" selected>Médio</option>
+      <option value="60">Rápido</option>
+      <option value="30">Corrida</option>
+    </select>
+    <button id="pauseBtn">⏸ Pausar</button>
+    <button id="restartBtn">🔄 Reiniciar</button>
+    <label for="skin">Skin:</label>
+    <select id="skin">
+      <option value="classic">Clássica</option>
+      <option value="emoji">Emoji 🐍</option>
+      <option value="blue">Azul Neon</option>
+    </select>
+  </div>
+  <canvas id="game" width="400" height="400"></canvas>
+  <button id="restartGameBtn" style="display:none; margin-top:16px; font-size:1.2em; background:#111; color:#0f0; border-radius:8px; border:2px solid #0f0; padding:8px 30px; cursor:pointer;">
+    🔄 Reiniciar Jogo
+  </button>
+  <div id="mobile-controls">
+    <div class="dpad-row">
+      <button class="ctrl" data-dir="ArrowUp">▲</button>
+    </div>
+    <div class="dpad-row">
+      <button class="ctrl" data-dir="ArrowLeft">◀</button>
+      <span class="dpad-space"></span>
+      <button class="ctrl" data-dir="ArrowRight">▶</button>
+    </div>
+    <div class="dpad-row">
+      <button class="ctrl" data-dir="ArrowDown">▼</button>
+    </div>
+  </div>
+  <div id="comandos">
+    <h3>Comandos:</h3>
+    <ul>
+      <li>Setas ou <b>WASD</b> para mover</li>
+      <li><b>Espaço</b>: Pausar/Continuar</li>
+      <li><b>R</b>: Reiniciar</li>
+    </ul>
+  </div>
+  <div id="ranking">
+    <h3>Ranking (Top 5)</h3>
+    <ol id="ranking-list"></ol>
+  </div>
+  <footer>
+    Feito por <a href="https://github.com/EliasDaniel01" target="_blank">EliasDaniel01</a> | <span id="ano"></span>
+  </footer>
+  <!-- Sons -->
+  <audio id="eatSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9e4f7e.mp3"></audio>
+  <audio id="powerupSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9e4f7e.mp3"></audio>
+  <audio id="loseSound" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124b0b3c6b.mp3"></audio>
+  <script src="script.js"></script>
 </body>
 </html>

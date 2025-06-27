@@ -109,10 +109,4 @@ Troque os nomes dos arquivos de imagem conforme os que estão no seu diretório!
 
 ---
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
----
-
 **Divirta-se jogando e, se quiser, contribua com melhorias!**

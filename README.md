@@ -56,11 +56,11 @@ snake-game/
 
 <!-- Exemplos de capturas de tela locais: -->
 <p align="center">
-  <img src="img/Captura de Tela (8).png" alt="Captura de Tela 8" width="350"/>
-  <img src="img/Captura de Tela (10).png" alt="Captura de Tela 10" width="350"/>
-  <img src="img/Captura de Tela (11).png" alt="Captura de Tela 11" width="350"/>
-  <img src="img/Captura de Tela (12).png" alt="Captura de Tela 12" width="350"/>
-  <img src="img/Captura de Tela (13).png" alt="Captura de Tela 13" width="350"/>
+  <img src="img/Captura de Tela (8).png"width="350"/>
+  <img src="img/Captura de Tela (10).png"width="350"/>
+  <img src="img/Captura de Tela (11).png"="350"/>
+  <img src="img/Captura de Tela (12).png"  width="350"/>
+  <img src="img/Captura de Tela (13).png"  width="350"/>
 </p>
 
 ---

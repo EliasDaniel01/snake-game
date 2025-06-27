@@ -51,7 +51,17 @@ snake-game/
 
 ## 🖼️ Demonstração
 
-![gif do jogo da cobrinha - exemplo]([https://media.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif](https://34344fb0-753a-4c10-986e-3ea0296983c5-00-3vues1rgvhg8w.picard.replit.dev))
+<!-- Substitua o caminho abaixo por um gif real do seu jogo, se desejar -->
+![Demonstração do jogo da cobrinha](img/demo.gif)
+
+<!-- Exemplos de capturas de tela locais: -->
+<p align="center">
+  <img src="img/Captura de Tela (8).png" alt="Captura de Tela 8" width="350"/>
+  <img src="img/Captura de Tela (10).png" alt="Captura de Tela 10" width="350"/>
+  <img src="img/Captura de Tela (11).png" alt="Captura de Tela 11" width="350"/>
+  <img src="img/Captura de Tela (12).png" alt="Captura de Tela 12" width="350"/>
+  <img src="img/Captura de Tela (13).png" alt="Captura de Tela 13" width="350"/>
+</p>
 
 ---
 
